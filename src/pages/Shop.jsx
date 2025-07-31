@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import ProductCard from "../components/ProductCard";
 import { useCart } from "../context/CartContext";
 
 export default function Shop() {
@@ -8,7 +8,8 @@ export default function Shop() {
   const [category, setCategory] = useState("all");
   const [priceRange, setPriceRange] = useState([0, 1000]);
   const [loading, setLoading] = useState(true);
-  const [sortBy, setSortBy] = useState("name-asc"); // New sort state
+  const [sortBy, setSortBy] = useState("name-asc");
+
   const { addToCart } = useCart();
 
   const categories = [
@@ -34,17 +35,14 @@ export default function Shop() {
   useEffect(() => {
     let temp = [...products];
 
-    // Filter by category
     if (category !== "all") {
       temp = temp.filter((p) => p.category === category);
     }
 
-    // Filter by price range
     temp = temp.filter(
       (p) => p.price >= priceRange[0] && p.price <= priceRange[1]
     );
 
-    // Sort products based on sortBy value
     temp.sort((a, b) => {
       switch (sortBy) {
         case "name-asc":
@@ -111,7 +109,6 @@ export default function Shop() {
           }
         />
 
-        {/* Sort By Dropdown */}
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
@@ -126,32 +123,14 @@ export default function Shop() {
         </select>
       </div>
 
-      <div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
         {loading ? (
           <p>Loading products...</p>
         ) : filtered.length === 0 ? (
           <p>No products found.</p>
         ) : (
-          filtered.map((item) => (
-            <div
-              key={item.id}
-              style={{
-                marginBottom: 30,
-                borderBottom: "1px solid #ddd",
-                paddingBottom: 15,
-              }}
-            >
-              <h3>{item.title}</h3>
-              <img src={item.thumbnail} alt={item.title} width="150" />
-              <p>${item.price}</p>
-              <p>Rating: ⭐ {item.rating.toFixed(1)}</p>
-              <div style={{ marginTop: 10 }}>
-                <Link to={`/product/${item.id}`} style={{ marginRight: 15 }}>
-                  View Details
-                </Link>
-                <button onClick={() => addToCart(item)}>Add to Cart</button>
-              </div>
-            </div>
+          filtered.map((product) => (
+            <ProductCard key={product.id} product={product} />
           ))
         )}
       </div>

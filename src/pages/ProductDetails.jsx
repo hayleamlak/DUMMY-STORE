@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { toast } from "react-toastify";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -29,6 +30,14 @@ export default function ProductDetails() {
       .finally(() => setLoading(false));
   }, [id]);
 
+  const increment = () => setQuantity((q) => q + 1);
+  const decrement = () => setQuantity((q) => (q > 1 ? q - 1 : 1));
+
+  const handleAddToCart = () => {
+    addToCart({ ...product, quantity });
+    
+  };
+
   if (loading) return <p>Loading product...</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
   if (!product) return null;
@@ -41,23 +50,14 @@ export default function ProductDetails() {
       <p>Price: ${product.price}</p>
       <p>Rating: ⭐ {product.rating.toFixed(1)}</p>
 
-      <div>
+      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
         <label>Quantity:</label>
-        <input
-          type="number"
-          value={quantity}
-          min={1}
-          onChange={(e) => setQuantity(Number(e.target.value))}
-          style={{ width: "60px", marginLeft: "10px" }}
-        />
+        <button onClick={decrement}>−</button>
+        <span>{quantity}</span>
+        <button onClick={increment}>+</button>
       </div>
 
-      <button
-        onClick={() => {
-          addToCart({ ...product, quantity });
-        }}
-        style={{ marginTop: "10px" }}
-      >
+      <button onClick={handleAddToCart} style={{ marginTop: "10px" }}>
         Add to Cart
       </button>
     </div>

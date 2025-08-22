@@ -1,16 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import ProductCard from "../components/ProductCard";
 import { useCart } from "../context/CartContext";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "../styles/Shop.css";
 
 export default function Shop() {
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [category, setCategory] = useState("all");
   const [priceRange, setPriceRange] = useState([0, 1000]);
-  const [loading, setLoading] = useState(true);
   const [sortBy, setSortBy] = useState("name-asc");
-
+  const [loading, setLoading] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const { addToCart } = useCart();
+  const sidebarRef = useRef();
 
   const categories = [
     { label: "All Categories", value: "all" },
@@ -20,6 +28,19 @@ export default function Shop() {
     { label: "Fragrances", value: "fragrances" },
     { label: "Skin Care", value: "skincare" },
   ];
+
+  const sortOptions = [
+    { label: "Name (A-Z)", value: "name-asc" },
+    { label: "Name (Z-A)", value: "name-desc" },
+    { label: "Price (Low to High)", value: "price-asc" },
+    { label: "Price (High to Low)", value: "price-desc" },
+    { label: "Rating (Low to High)", value: "rating-asc" },
+    { label: "Rating (High to Low)", value: "rating-desc" },
+  ];
+
+  useEffect(() => {
+    AOS.init({ duration: 800 });
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -65,75 +86,154 @@ export default function Shop() {
     setFiltered(temp);
   }, [category, priceRange, products, sortBy]);
 
+  // Close sidebar if clicking outside on small screens
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        sidebarOpen &&
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target)
+      ) {
+        setSidebarOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [sidebarOpen]);
+
   return (
-    <div style={{ padding: 20 }}>
-      <h1>🛍️ Shop</h1>
-
-      <div style={{ marginBottom: 20 }}>
-        <select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          style={{ padding: "8px", marginRight: "10px" }}
+    <div className="shop-page">
+      {/* Carousel Section */}
+      <div className="shop-carousel">
+        <Swiper
+          spaceBetween={30}
+          slidesPerView={1}
+          loop={true}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
         >
-          {categories.map((cat) => (
-            <option key={cat.value} value={cat.value}>
-              {cat.label}
-            </option>
-          ))}
-        </select>
-
-        <label style={{ marginRight: "10px" }}>
-          💰 Price Range: ${priceRange[0]} - ${priceRange[1]}
-        </label>
-
-        <input
-          type="range"
-          min="0"
-          max="1000"
-          step="10"
-          value={priceRange[0]}
-          onChange={(e) =>
-            setPriceRange([Number(e.target.value), priceRange[1]])
-          }
-          style={{ marginRight: "10px" }}
-        />
-
-        <input
-          type="range"
-          min="0"
-          max="1000"
-          step="10"
-          value={priceRange[1]}
-          onChange={(e) =>
-            setPriceRange([priceRange[0], Number(e.target.value)])
-          }
-        />
-
-        <select
-          value={sortBy}
-          onChange={(e) => setSortBy(e.target.value)}
-          style={{ padding: "8px", marginLeft: "20px" }}
-        >
-          <option value="name-asc">Sort by Name (A-Z)</option>
-          <option value="name-desc">Sort by Name (Z-A)</option>
-          <option value="price-asc">Sort by Price (Low to High)</option>
-          <option value="price-desc">Sort by Price (High to Low)</option>
-          <option value="rating-asc">Sort by Rating (Low to High)</option>
-          <option value="rating-desc">Sort by Rating (High to Low)</option>
-        </select>
+          <SwiperSlide>
+            <img
+              src="https://source.unsplash.com/1200x400/?shopping,fashion"
+              alt="Shop Slide 1"
+              className="carousel-img"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img
+              src="https://source.unsplash.com/1200x400/?clothes,style"
+              alt="Shop Slide 2"
+              className="carousel-img"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img
+              src="https://source.unsplash.com/1200x400/?shoes,sneakers"
+              alt="Shop Slide 3"
+              className="carousel-img"
+            />
+          </SwiperSlide>
+        </Swiper>
       </div>
 
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+      {/* Sidebar */}
+      <aside
+        className={`sidebar ${sidebarOpen ? "open" : ""}`}
+        ref={sidebarRef}
+        aria-label="Shop Filters Sidebar"
+      >
+        <button
+          className="sidebar-hamburger"
+          aria-expanded={sidebarOpen}
+          aria-controls="sidebar-filters"
+          onClick={() => setSidebarOpen((open) => !open)}
+          aria-label={sidebarOpen ? "Close filters menu" : "Open filters menu"}
+        >
+          <div className={`bar ${sidebarOpen ? "open" : ""}`}></div>
+          <div className={`bar ${sidebarOpen ? "open" : ""}`}></div>
+          <div className={`bar ${sidebarOpen ? "open" : ""}`}></div>
+        </button>
+
+        <div
+          id="sidebar-filters"
+          className="filters-content"
+          aria-hidden={!sidebarOpen && window.innerWidth < 1024}
+        >
+          <h2>Categories</h2>
+          <div className="button-group categories-group">
+            {categories.map((cat) => (
+              <button
+                key={cat.value}
+                className={`btn-filter ${category === cat.value ? "active" : ""}`}
+                onClick={() => setCategory(cat.value)}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+
+          <h2>Price Range</h2>
+          <label className="price-label">
+            ${priceRange[0]} - ${priceRange[1]}
+          </label>
+          <div className="price-range-inputs">
+            <input
+              type="range"
+              min="0"
+              max="1000"
+              step="10"
+              value={priceRange[0]}
+              onChange={(e) => setPriceRange([Number(e.target.value), priceRange[1]])}
+            />
+            <input
+              type="range"
+              min="0"
+              max="1000"
+              step="10"
+              value={priceRange[1]}
+              onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
+            />
+          </div>
+
+          <h2>Sort Options</h2>
+          <div className="button-group">
+            {sortOptions.map((opt) => (
+              <button
+                key={opt.value}
+                className={`btn-filter ${sortBy === opt.value ? "active" : ""}`}
+                onClick={() => setSortBy(opt.value)}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </aside>
+
+      {/* Product Grid */}
+      <main className="product-grid" tabIndex={-1}>
         {loading ? (
           <p>Loading products...</p>
         ) : filtered.length === 0 ? (
           <p>No products found.</p>
         ) : (
           filtered.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <div key={product.id} data-aos="fade-up" className="product-card-container">
+              <div className="product-card">
+                <button className="wishlist-button" aria-label="Add to Wishlist">
+                  ❤️
+                </button>
+                <ProductCard product={product} />
+              </div>
+            </div>
           ))
         )}
-      </div>
+      </main>
+
+      {/* Overlay for small screen sidebar open */}
+      {sidebarOpen && <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)} aria-hidden="true" />}
     </div>
   );
 }

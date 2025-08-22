@@ -7,12 +7,14 @@ import Cart from "./pages/Cart";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Wishlist from "./pages/Wishlist";
+import Profile from "./pages/Profile";
 
 export default function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
+        <Route path="/profile" element={<Profile />} />
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/product/:id" element={<ProductDetails />} />

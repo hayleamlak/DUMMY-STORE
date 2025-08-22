@@ -77,7 +77,7 @@ export function CartProvider({ children }) {
     0
   );
 
-  const taxRate = 0.08; // 8% tax
+  const taxRate = 0.15; // 8% tax
   const tax = subtotal * taxRate;
 
   const shipping = subtotal > 100 ? 0 : 10;

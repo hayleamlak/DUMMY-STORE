@@ -1,0 +1,77 @@
+.profile-container {
+  max-width: 900px;
+  margin: 5rem auto;
+  padding: 2rem;
+  background: #111;
+  color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.06);
+}
+
+.profile-top {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  border-bottom: 1px solid #333;
+  padding-bottom: 2rem;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 15px #fff;
+}
+
+.profile-info h2 {
+  margin: 0 0 0.5rem;
+}
+
+.profile-info p {
+  margin: 0.2rem 0;
+  color: #ccc;
+}
+
+.edit-btn {
+  margin-top: 1rem;
+  background: #fff;
+  color: #111;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.profile-sections {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.profile-card {
+  flex: 1;
+  background: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.logout-btn {
+  margin-top: 2rem;
+  background: transparent;
+  color: #ff6666;
+  border: 1px solid #ff6666;
+  padding: 0.6rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #ff6666;
+  color: #fff;
+}

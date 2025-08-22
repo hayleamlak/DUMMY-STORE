@@ -1,0 +1,77 @@
+/* src/styles/Home/Footer.css */
+
+.footer {
+  background: #111;
+  color: white;
+  padding: 3rem 2rem 1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto 1rem;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.footer-section {
+  flex: 1 1 250px;
+  min-width: 220px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  margin-bottom: 1rem;
+  color: #ff4081;
+}
+
+.footer-section p,
+.footer-section ul,
+.footer-section a {
+  font-size: 0.9rem;
+  color: #ddd;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.7rem;
+}
+
+.footer-section ul li a:hover {
+  color: #ff4081;
+  text-decoration: underline;
+}
+
+.social-icons {
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  font-size: 1.6rem;
+  margin-right: 1rem;
+  color: #ddd;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #ff4081;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #555;
+  border-top: 1px solid #222;
+  padding-top: 1rem;
+  
+}

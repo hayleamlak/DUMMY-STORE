@@ -1,0 +1,8 @@
+*{
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  overflow-x: hidden;
+  background: #000; /* Or whatever background you want */
+}

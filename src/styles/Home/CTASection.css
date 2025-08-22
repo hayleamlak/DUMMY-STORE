@@ -1,0 +1,47 @@
+/* src/styles/Home/CTASection.css */
+
+.cta-section {
+  background: linear-gradient(90deg, #ff4081 0%, #e91e63 100%);
+  padding: 4rem 2rem;
+  text-align: center;
+  color: white;
+  border-radius: 15px;
+  margin: 4rem auto;
+  max-width: 900px;
+  box-shadow: 0 0 30px rgba(255, 64, 129, 0.7);
+  transition: box-shadow 0.3s ease;
+}
+
+.cta-section:hover {
+  box-shadow: 0 0 50px rgba(255, 64, 129, 1);
+}
+
+.cta-content h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.cta-content p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  display: inline-block;
+  background: white;
+  color: #e91e63;
+  padding: 1rem 3rem;
+  font-weight: 700;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: background 0.3s ease, color 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.cta-button:hover {
+  background: #e91e63;
+  color: white;
+  box-shadow: 0 0 20px #ff4081;
+  transform: scale(1.05);
+}

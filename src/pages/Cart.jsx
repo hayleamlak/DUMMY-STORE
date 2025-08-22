@@ -74,7 +74,7 @@ export default function Cart() {
               <strong>Shipping:</strong> ${shipping.toFixed(2)}
             </p>
             <p>
-              <strong>Tax (8%):</strong> ${tax.toFixed(2)}
+              <strong>Tax (15%):</strong> ${tax.toFixed(2)}
             </p>
             <h3>Grand Total: ${grandTotal.toFixed(2)}</h3>
           </div>

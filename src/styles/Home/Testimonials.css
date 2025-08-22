@@ -1,0 +1,80 @@
+/* src/styles/Home/Testimonials.css */
+
+.testimonials-section {
+  background: #111;
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 4rem;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(255, 64, 129, 0.4);
+}
+
+.testimonials-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.testimonial-card {
+  background: #222;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(255, 64, 129, 0.6);
+  position: relative;
+}
+
+.testimonial-photo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 3px solid #ff4081;
+}
+
+.testimonial-quote {
+  font-style: italic;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  min-height: 70px;
+}
+
+.stars {
+  color: #ff4081;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.stars .filled {
+  color: #ff4081;
+}
+
+.stars span {
+  color: #555;
+}
+
+.testimonial-name {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.testimonial-controls {
+  margin-top: 1.5rem;
+}
+
+.testimonial-controls button {
+  background: #ff4081;
+  color: white;
+  border: none;
+  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: background 0.3s ease;
+}
+
+.testimonial-controls button:hover {
+  background: #e91e63;
+}

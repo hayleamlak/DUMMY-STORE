@@ -72,12 +72,11 @@
 .footer-bottom {
   text-align: center;
   font-size: 0.85rem;
-  color: #c12b2b;
-
+  color: #555;
+  
   border-top: 1px solid #222;
   padding-top: 1rem;
 }
-
 .footer-bottom {
   text-align: center;
   font-size: 0.85rem;

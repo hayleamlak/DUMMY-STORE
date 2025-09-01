@@ -9,6 +9,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <WishlistProvider>
       <CartProvider>
         <App />
+
       </CartProvider>
     </WishlistProvider>
 

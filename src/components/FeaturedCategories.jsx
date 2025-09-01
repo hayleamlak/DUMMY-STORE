@@ -5,7 +5,7 @@ import "../styles/Home/FeaturedCategories.css";
 const categories = [
   {
     id: 1,
-    name: "Men",
+    name: "women",
     image: "https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=800&q=80",
   },
   {

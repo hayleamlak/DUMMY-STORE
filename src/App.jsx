@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Wishlist from "./pages/Wishlist";
 import Profile from "./pages/Profile";
 
+
 export default function App() {
   return (
     <Router>

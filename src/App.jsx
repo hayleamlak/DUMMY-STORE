@@ -19,11 +19,13 @@ export default function App() {
 
         <Route path="/" element={<Home />} />
 
-        
+
         <Route path="/shop" element={<Shop />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/wishlist" element={<Wishlist />}
+        
+        />
 
       </Routes>
       <ToastContainer position="top-right" autoClose={1000} />

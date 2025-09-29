@@ -315,7 +315,7 @@
     }
     .testimonials-grid {
       flex-direction: column;
-      align-items: center;
+      align-items: start;
     }
   }
   @media (max-width: 600px) {

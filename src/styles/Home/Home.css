@@ -318,13 +318,13 @@
       align-items: center;
     }
   }
-  @media (max-width: 600px) {
+  @media (max-width: 500px) {
     .product-grid {
       grid-template-columns: 1fr;
     }
     .newsletter-form {
       flex-direction: column;
-      gap: 0.7rem;
+      gap: 0.rem;
     }
     .promo-section, .newsletter-section {
       padding: 1.2rem 0.5rem;

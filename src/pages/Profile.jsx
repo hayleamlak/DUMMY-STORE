@@ -30,7 +30,7 @@ export default function Profile() {
         </div>
         <div className="profile-card">
           <h3>wishlists</h3>
-          <p>{user.wishlist} items saved</p>
+          <p>{user.wishlist} we save you items </p>
         </div>
       </div>
 

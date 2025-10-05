@@ -34,7 +34,7 @@ export default function Profile() {
         </div>
       </div>
 
-      <button className="logout-btn">Log Out</button>
+      <button className="logout-btn">log out button</button>
     </div>
   );
 }

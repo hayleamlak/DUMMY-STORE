@@ -19,7 +19,7 @@ export default function Profile() {
           <h2>{user.name}</h2>
           <p>{user.email}</p>
           <p>{user.address}</p>
-          <button className="edit-btn">Edit Profile</button>
+          <button className="edit-btn">edit profile</button>
         </div>
       </div>
 

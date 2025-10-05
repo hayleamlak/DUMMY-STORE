@@ -26,7 +26,7 @@ export default function Profile() {
       <div className="profile-sections">
         <div className="profile-card">
           <h3>Orders</h3>
-          <p>You have {user.orders} all orders</p>
+          <p>You have {user.orders} All orders</p>
         </div>
         <div className="profile-card">
           <h3>wishlists</h3>

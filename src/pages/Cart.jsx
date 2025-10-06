@@ -68,15 +68,15 @@ export default function Cart() {
 
           <div className="cart-summary">
             <p>
-              <strong>Subtotal:</strong> ${subtotal.toFixed(2)}
+              <strong>Subtotal:</strong> ETB{subtotal.toFixed(2)}
             </p>
             <p>
-              <strong>Shipping:</strong> ${shipping.toFixed(2)}
+              <strong>Shipping:</strong> ETB{shipping.toFixed(2)}
             </p>
             <p>
               <strong>Tax (15%):</strong> ${tax.toFixed(2)}
             </p>
-            <h3>Grand Total: ${grandTotal.toFixed(2)}</h3>
+            <h3>Grand Total: ETB{grandTotal.toFixed(2)}</h3>
           </div>
         </>
       )}

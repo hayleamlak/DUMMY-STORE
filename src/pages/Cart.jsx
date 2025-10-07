@@ -59,7 +59,7 @@ export default function Cart() {
                     className="remove-btn"
                     onClick={() => handleRemove(item.id, item.title)}
                   >
-                    Remove
+                    Remonved
                   </button>
                 </div>
               </li>
